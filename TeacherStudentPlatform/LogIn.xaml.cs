@@ -34,14 +34,20 @@ namespace TeacherStudentPlatform
             string username = IDTextbox.Text;
             string password = PasswordBox.Password;
 
-            // No need to redefine filePath, as it's already defined in the constructor
-
             if (credentialManager.ValidateCredentials(username, password))
             {
-                // Navigate to the appropriate page based on the user role
-                if (username.Contains(".utb")) // Assuming .utb indicates a student
+                if (username.Contains(".utb"))
                 {
                     StudentHome loginPage = new StudentHome();
+                    MainFrame.NavigationService.Navigate(loginPage);
+
+                    LogInStackpanel.Visibility = Visibility.Hidden;
+                    WindowState = WindowState.Maximized;
+                }
+
+                else if (username.Contains(".admin"))
+                {
+                    AdminHome loginPage = new AdminHome();
                     MainFrame.NavigationService.Navigate(loginPage);
 
                     LogInStackpanel.Visibility = Visibility.Hidden;
@@ -59,7 +65,6 @@ namespace TeacherStudentPlatform
             }
             else
             {
-                // Display error message if authentication fails
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
 
