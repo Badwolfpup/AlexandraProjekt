@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TeacherStudentPlatform"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Calendar" Background="#4d5566">
+      Title="Calendar" Background="#f0f0f0">
 
     <Grid>
         <local:MainMenu />
@@ -14,6 +14,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="140" />
                 <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -23,17 +24,17 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="15"
-    Margin="15, 15, 15, 15"
-    Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
-    BorderThickness="0"
-    BorderBrush="White"
-    Background="#677185">
+            <Border CornerRadius="5"
+Margin="15, 15, 15, 15"
+Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
+BorderThickness="0"
+BorderBrush="White"
+Background="#f0f0f0">
 
                 <TextBlock Text="Calendar"
-      Margin="10"
-      Foreground="White"
-      FontStyle="Oblique"/>
+  Margin="10"
+  Foreground="#4d5566"
+  FontStyle="Oblique"/>
             </Border>
         </Grid>
     </Grid>

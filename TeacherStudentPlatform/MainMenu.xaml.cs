@@ -57,8 +57,8 @@ namespace TeacherStudentPlatform
         private void ChatButton_Click(object sender, RoutedEventArgs e)
         {
             Window parent = Window.GetWindow(this);
-            News news = new News();
-            parent.Content = news;
+            Chat chat = new Chat();
+            parent.Content = chat;
         }
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)

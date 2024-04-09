@@ -18,13 +18,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="SCHOOL" FontSize="16" Foreground="White" Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" Height="50" Width="150" Padding="0, 10, 10, 10" Background="#677185" FontFamily="Palatino Linotype" FontWeight="Bold" Cursor="Hand"
+        <Button Content="SCHOOL" FontSize="16" Foreground="#4d5566" Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" Height="50" Width="150" Padding="0, 10, 10, 10" Background="#f0f0f0" FontFamily="Palatino Linotype" FontWeight="Bold" Cursor="Hand"
 Click="HomeButton_Click"/>
 
         <!-- Left-aligned menu items -->
 
 
-        <Menu HorizontalAlignment="Stretch" Background="#677185" Foreground="White" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="auto" Padding="0, 2, 0, 0">
+        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Foreground="#4d5566" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="auto" Padding="0, 2, 0, 0">
 
             <MenuItem x:Name="NewsButton" 
                   FontSize="12" 
@@ -68,8 +68,8 @@ Click="HomeButton_Click"/>
 
 
         <!-- Right-aligned menu items -->
-        <Menu HorizontalAlignment="Stretch" Background="#677185" Grid.Column="2"
-          Padding="0, 0, 0, 0" Foreground="White" Height="50">
+        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Grid.Column="2"
+          Padding="0, 0, 0, 0" Foreground="#4d5566" Height="50">
             <MenuItem x:Name="NotificationButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
@@ -78,7 +78,7 @@ Click="HomeButton_Click"/>
                   VerticalAlignment="Stretch"
                   Height="auto" 
                   BorderThickness="0"
-                  Margin="950, 10, 10, 10"
+                  Margin="390, 10, 10, 10"
                   Padding="5, 5, 5, 5"
                   HorizontalAlignment="Right"
                   Cursor="Hand">
@@ -95,7 +95,8 @@ Click="HomeButton_Click"/>
                   Margin="10, 10, 10, 10"
                   Padding="5, 5, 5, 5"
                   HorizontalAlignment="Right"
-                  Cursor="Hand">
+                  Cursor="Hand"
+                      Click="ChatButton_Click">
             </MenuItem>
 
             <MenuItem x:Name="LogOutButton" 
@@ -133,7 +134,7 @@ Click="HomeButton_Click"/>
 
         <Style TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#677185"/>
+            <Setter Property="Background" Value="#4d5566"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

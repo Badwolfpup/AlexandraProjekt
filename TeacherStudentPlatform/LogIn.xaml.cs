@@ -25,7 +25,7 @@ namespace TeacherStudentPlatform
         {
             InitializeComponent();
             // Instantiate CredentialManager only once in the constructor
-            credentialManager = new CredentialManager(@"C:\Users\alexandra.f-elev1\source\repos\StudentTeacherPlatform\StudentTeacherPlatform\obj\Admin.txt");
+            credentialManager = new CredentialManager(@"C:\Users\alexandra.f-elev1\source\repos\TeacherStudentPlatform\TeacherStudentPlatform\obj\Admin.txt");
             IDTextbox.Focus();
         }
 

@@ -8,13 +8,13 @@
         Title="LogIn" Height="450" Width="800" WindowStartupLocation="CenterScreen" KeyDown="UserControl_KeyDown" ResizeMode="NoResize">
     <Grid>
         <Frame x:Name="MainFrame" />
-        <StackPanel x:Name="LogInStackpanel" Background="#4d5566">
-            <Label Content="SCHOOL" FontSize="26" Foreground="White" Grid.Column="0" Grid.Row="0" Height="52" Width="300" Padding="85, 15, 10, 10" Margin="0, 80, 0, 10" FontFamily="Palatino Linotype" FontWeight="Bold" />
+        <StackPanel x:Name="LogInStackpanel" Background="#f0f0f0">
+            <Label Content="SCHOOL" FontSize="26" Foreground="#4d5566" Grid.Column="0" Grid.Row="0" Height="52" Width="300" Padding="85, 15, 10, 10" Margin="0, 80, 0, 10" FontFamily="Palatino Linotype" FontWeight="Bold" />
             <TextBlock Text="ID"
                    Margin="50, 20, 50, 0"
                    Width="180"
                    Height="20"
-                   Foreground="White"/>
+                   Foreground="#4d5566"/>
             <TextBox Margin="50, 0, 50, -20"
                  Width="180"
                  Height="25"
@@ -24,7 +24,7 @@
                 Margin="50, 40, 50, 0"
                 Width="180"
                  Height="20"
-                   Foreground="White"/>
+                   Foreground="#4d5566"/>
             <PasswordBox Margin="50, 0, 50, 0"
                 Width="180"
                 Height="25"
@@ -35,9 +35,9 @@
                 Width="180"
                 Height="30"
                 Click="LogInButton_Click"
-                Foreground="White"
-                Background="#804D5566"
-                BorderBrush="White"/>
+                Foreground="#4d5566"
+                Background="#f0f0f0"
+                BorderBrush="#4d5566"/>
         </StackPanel>
     </Grid>
 </Window>

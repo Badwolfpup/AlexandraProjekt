@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TeacherStudentPlatform"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="News" Background="#4d5566">
+      Title="News" Background="#f0f0f0">
 
     <Grid>
         <local:MainMenu />
@@ -14,6 +14,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="140" />
                 <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -23,16 +24,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="15"
+            <Border CornerRadius="5"
 Margin="15, 15, 15, 15"
-Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
+Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
 BorderThickness="0"
 BorderBrush="White"
-Background="#677185">
+Background="#f0f0f0">
 
                 <TextBlock Text="News"
   Margin="10"
-  Foreground="White"
+  Foreground="#4d5566"
   FontStyle="Oblique"/>
             </Border>
         </Grid>
