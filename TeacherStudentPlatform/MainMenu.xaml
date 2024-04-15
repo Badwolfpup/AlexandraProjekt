@@ -23,18 +23,16 @@ Click="HomeButton_Click"/>
 
         <!-- Left-aligned menu items -->
 
-
-        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Foreground="#4d5566" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="auto" Padding="0, 2, 0, 0">
+        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Foreground="#4d5566" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="auto" Padding="0, 0, 0, 0">
 
             <MenuItem x:Name="NewsButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="NEWS" 
                   Width="auto" 
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0"
-                  Margin="10"
-                  Padding="5"
+                  Padding="5, 15, 5, 5"
                   Cursor="Hand"
                       Click="NewsButton_Click">
             </MenuItem>
@@ -44,7 +42,7 @@ Click="HomeButton_Click"/>
                   FontWeight="SemiBold" 
                   Header="CALENDAR" 
                   Width="auto" 
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0" 
                   Margin="10"
                   Padding="5, 5, 5, 5"
@@ -57,10 +55,10 @@ Click="HomeButton_Click"/>
                   FontWeight="SemiBold" 
                   Header="LEARNING HUB" 
                   Width="auto" 
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0"
                   Margin="10"
-                  Padding="5"
+                  Padding="5, 5, 5, 5"
                   Cursor="Hand"
                       Click="LearningHubButton_Click">
             </MenuItem>
@@ -76,7 +74,7 @@ Click="HomeButton_Click"/>
                   Header="🔔" 
                   Width="auto"
                   VerticalAlignment="Stretch"
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0"
                   Margin="390, 10, 10, 10"
                   Padding="5, 5, 5, 5"
@@ -90,7 +88,7 @@ Click="HomeButton_Click"/>
                   Header="🗨️" 
                   Width="auto"
                   VerticalAlignment="Stretch"
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0"
                   Margin="10, 10, 10, 10"
                   Padding="5, 5, 5, 5"
@@ -104,7 +102,7 @@ Click="HomeButton_Click"/>
                   FontWeight="SemiBold" 
                   Header="LOGOUT" 
                   Width="auto" 
-                  Height="auto" 
+                  Height="50" 
                   BorderThickness="0"
                   Margin="10, 10, 15, 10"
                   Padding="5, 5, 5, 5"
@@ -121,12 +119,25 @@ Click="HomeButton_Click"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="MenuItem">
-                        <ContentPresenter Content="{TemplateBinding Header}"
-                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          RecognizesAccessKey="True"/>
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#6c7582"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#37404e"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -138,17 +149,27 @@ Click="HomeButton_Click"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center"
                                       VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#6c7582"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#37404e"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+        
     </UserControl.Resources>
 
 </UserControl>

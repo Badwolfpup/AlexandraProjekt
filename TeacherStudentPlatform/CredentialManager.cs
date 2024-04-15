@@ -40,7 +40,6 @@ namespace TeacherStudentPlatform
 
         public bool ValidateCredentials(string username, string password)
         {
-            // Validate credentials for all types of usernames
             return credentials.Exists(cred => cred.Username == username && cred.Password == password);
         }
 

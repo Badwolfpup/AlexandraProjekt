@@ -1,0 +1,5 @@
+[
+    {"Username": "student.utb", "Password": "password"},
+    {"Username": "admin.admin", "Password": "password"},
+    {"Username": "teacher.teach", "Password": "password"}
+]

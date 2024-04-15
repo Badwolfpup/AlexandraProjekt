@@ -24,8 +24,7 @@ namespace TeacherStudentPlatform
         public LogIn()
         {
             InitializeComponent();
-            // Instantiate CredentialManager only once in the constructor
-            credentialManager = new CredentialManager(@"C:\Users\alexandra.f-elev1\source\repos\TeacherStudentPlatform\TeacherStudentPlatform\obj\Admin.txt");
+            credentialManager = new CredentialManager("Admin.txt");
             IDTextbox.Focus();
         }
 
@@ -54,7 +53,7 @@ namespace TeacherStudentPlatform
                     WindowState = WindowState.Maximized;
                 }
 
-                else
+                else if (username.Contains(".teach"))
                 {
                     TeacherHome loginPage = new TeacherHome();
                     MainFrame.NavigationService.Navigate(loginPage);

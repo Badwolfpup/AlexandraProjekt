@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <Border CornerRadius="5"
-Margin="15, 15, 15, 15"
+Margin="15, 10, 15, 15"
 Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
 BorderThickness="0"
 BorderBrush="White"
