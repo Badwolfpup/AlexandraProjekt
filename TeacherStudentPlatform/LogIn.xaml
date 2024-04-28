@@ -35,6 +35,7 @@
                 Width="180"
                 Height="30"
                 Click="LogInButton_Click"
+                Cursor="Hand"
                 Foreground="#4d5566"
                 Background="#f0f0f0"
                 BorderBrush="#4d5566"/>

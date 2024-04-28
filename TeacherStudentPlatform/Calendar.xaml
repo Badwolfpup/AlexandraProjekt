@@ -8,13 +8,52 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Calendar" Background="#f0f0f0">
 
+    <Page.Resources>
+        <Style x:Key="DayBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#f0f0f0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style TargetType="MenuItem">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Content="{TemplateBinding Header}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      Margin="{TemplateBinding Padding}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#ffffff"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+
     <Grid>
         <local:MainMenu />
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="170" />
                 <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -24,18 +63,128 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="5"
-Margin="15, 15, 15, 15"
-Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
-BorderThickness="0"
-BorderBrush="White"
-Background="#f0f0f0">
+            <Border CornerRadius="0"
+                    Margin="0, 5, 5, 0"
+                    Grid.Column="1" Grid.Row="1"             
+                    Grid.RowSpan="3"
+                    BorderThickness="0"
+                    BorderBrush="#f0f0f0"
+                    Background="#ffffff">
 
-                <TextBlock Text="Calendar"
-  Margin="10"
-  Foreground="#4d5566"
-  FontStyle="Oblique"/>
+                <Grid>
+                    <StackPanel x:Name="MainCalendarStackPanel">
+                        <StackPanel Width="730" 
+                                    Orientation="Horizontal" 
+                                    Margin="0">
+                            <TextBlock x:Name="MonthYearLabel" 
+                                    Margin="9, 15, 0, 0" 
+                                    Text="{Binding CurrentMonthYear}"
+                                    HorizontalAlignment="Left"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d5566"
+                                    FontSize="12"
+                                    VerticalAlignment="Center"
+                                    Width="70"
+                                    Height="25"/>
+
+                            <Menu Background="White"
+                                  Foreground="#4d5566"
+                                  FontWeight="SemiBold">
+                                <MenuItem Header="PREVIOUS"
+                                    Click="PrevMonth_Click" 
+                                    Width="60"
+                                    Height="25"
+                                    Margin="450, 10, 0, 0"
+                                    HorizontalAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand"/>
+                            </Menu>
+
+                            <Menu Background="White"
+                                  Foreground="#4d5566"
+                                  FontWeight="SemiBold">
+                                <MenuItem Header="NEXT" 
+                                    Click="NextMonth_Click" 
+                                    Width="32"
+                                    Height="25"
+                                    Margin="10, 10, 0, 0"
+                                    HorizontalAlignment="Right"
+                                          VerticalContentAlignment="Center"
+                                    Cursor="Hand"/>
+
+                                <MenuItem Header="ADD TASK" 
+                                        Click="AddTaskWindow_Click" 
+                                        Width="70"
+                                        Height="25"
+                                        Margin="10, 10, 0, 0"
+                                        HorizontalAlignment="Right"
+                                        VerticalContentAlignment="Center"
+                                        Cursor="Hand"/>
+                            </Menu>
+                        </StackPanel>
+
+                        <ScrollViewer x:Name="scrollView" 
+                                      Height="530" 
+                                      Width="720" 
+                                      Margin="2, 0, 0, 0">
+                            <StackPanel x:Name="CalendarStackPanel" 
+                                        HorizontalAlignment="Left" 
+                                        Width="700">
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Grid>
             </Border>
+            <Border CornerRadius="0"
+        Margin="0, 5, 5, 0"
+        Grid.Column="2" Grid.Row="1"             
+        Grid.RowSpan="3"
+        BorderThickness="0"
+        BorderBrush="#f0f0f0"
+        Background="#ffffff"/>
         </Grid>
+
+        <!--> Add Task Calendar Window <-->
+        <Border BorderBrush="#f0f0f0"
+                BorderThickness="5"
+                CornerRadius="2"
+                x:Name="AddTaskWindow"
+                Visibility="Hidden"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Grid.RowSpan="5"
+                Grid.ColumnSpan="5">
+            <Grid>
+                <StackPanel Orientation="Vertical" 
+                    Margin="10, 10, 10, 10" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.RowSpan="5"
+                    Grid.ColumnSpan="5"
+                    Background="White">
+
+                <TextBox x:Name="TaskDescriptionTextBox" 
+                     Width="200" 
+                     Margin="10" 
+                     Height="23" 
+                     Text="{Binding TaskDescription, Mode=TwoWay}" 
+                     VerticalAlignment="Center" 
+                     FontSize="12"
+                     Grid.Row="0"/>
+
+                <DatePicker x:Name="TaskDatePicker" 
+                        Width="200" Height="23" 
+                        SelectedDate="{Binding SelectedTaskDate, Mode=TwoWay}" 
+                        Grid.Row="1"
+                        Grid.ColumnSpan="1"
+                        Margin="10"/>
+
+                <Button Content="Add Task" 
+                    Click="AddTaskButton_Click" 
+                    Height="23" 
+                    Margin="10"/>
+            </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

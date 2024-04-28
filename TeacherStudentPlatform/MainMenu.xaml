@@ -8,78 +8,111 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="165" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="SCHOOL" FontSize="16" Foreground="#4d5566" Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" Height="50" Width="150" Padding="0, 10, 10, 10" Background="#f0f0f0" FontFamily="Palatino Linotype" FontWeight="Bold" Cursor="Hand"
-Click="HomeButton_Click"/>
-
         <!-- Left-aligned menu items -->
-
-        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Foreground="#4d5566" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="auto" Padding="0, 0, 0, 0">
-
-            <MenuItem x:Name="NewsButton" 
+        <Menu Background="White" Foreground="#4d5566" Grid.Row="0" Padding="5, 0, 0, 0" Margin="0, 50, 0, -600"> 
+            
+            <StackPanel Grid.Row="0" Grid.RowSpan="5" Width="153" Height="450">
+                <MenuItem Header="HELLO, IT'S"
+                   Background="White"
+                   Foreground="#4d5566"
+                   FontSize="11"
+                   FontWeight="Bold"
+                   Margin="0, 10, 15, 0"
+                   Padding="20, 0, 0, 0"
+                   Height="20"/>
+                <MenuItem Header="{Binding CurrentDay, RelativeSource={RelativeSource AncestorType=local:MainMenu}}"
+                   Background="White"
+                   Foreground="#4d5566"
+                   FontSize="11"
+                   FontWeight="Bold"
+                   Margin="0, 0, 15, 10"
+                   Padding="20, 0, 0, 0"
+                   Height="20"/>
+                
+                <MenuItem x:Name="NewsButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="NEWS" 
                   Width="auto" 
-                  Height="50" 
+                  Height="30" 
                   BorderThickness="0"
-                  Padding="5, 15, 5, 5"
+                  Padding="20, 0, 0, 0"
+                  Margin="0, 3, 0, 0"
                   Cursor="Hand"
-                      Click="NewsButton_Click">
-            </MenuItem>
+                  Click="NewsButton_Click"
+                  Grid.Column="1"
+                  VerticalContentAlignment="Center">
+                </MenuItem>
 
-            <MenuItem x:Name="CalendarButton" 
+                <MenuItem x:Name="CalendarButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="CALENDAR" 
                   Width="auto" 
-                  Height="50" 
+                  Height="30" 
                   BorderThickness="0" 
-                  Margin="10"
-                  Padding="5, 5, 5, 5"
+                  Padding="20, 0, 0, 0"
+                  Margin="0, 0, 0, 0"
                   Cursor="Hand"
-                  Click="CalendarButton_Click">
-            </MenuItem>
+                  Click="CalendarButton_Click"
+                  Grid.Column="0"
+                  VerticalContentAlignment="Center">
+                </MenuItem>
 
-            <MenuItem x:Name="LearningPlatformButton" 
+                <MenuItem x:Name="LearningPlatformButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="LEARNING HUB" 
                   Width="auto" 
-                  Height="50" 
+                  Height="30" 
                   BorderThickness="0"
-                  Margin="10"
-                  Padding="5, 5, 5, 5"
+                  Padding="20, 0, 0, 0"
+                  Margin="0, 0, 0, 0"
                   Cursor="Hand"
-                      Click="LearningHubButton_Click">
-            </MenuItem>
+                  Click="LearningHubButton_Click"
+                  Grid.Column="1"
+                  VerticalContentAlignment="Center">
+                </MenuItem>
+            </StackPanel>
         </Menu>
 
-
         <!-- Right-aligned menu items -->
-        <Menu HorizontalAlignment="Stretch" Background="#f0f0f0" Grid.Column="2"
-          Padding="0, 0, 0, 0" Foreground="#4d5566" Height="50">
+        <Menu Background="#ffffff" Grid.Column="0"
+          Padding="0, 0, 0, 0" Foreground="#4d5566" Margin="0,0,0,0" Grid.ColumnSpan="3">
+            <MenuItem x:Name="HomeButton" 
+                  FontSize="14" 
+                  FontWeight="Bold"
+                  Header="SCHOOL" 
+                  Width="168" 
+                  Height="50" 
+                  BorderThickness="0"
+                  Padding="23, 15, 5, 5"
+                  Cursor="Hand"
+                  Click="HomeButton_Click"
+                  Grid.Row="1"
+                  Grid.Column="1"/>
             <MenuItem x:Name="NotificationButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="🔔" 
                   Width="auto"
                   VerticalAlignment="Stretch"
-                  Height="50" 
+                  Height="30" 
                   BorderThickness="0"
-                  Margin="390, 10, 10, 10"
+                  Margin="900, 10, 10, 10"
                   Padding="5, 5, 5, 5"
                   HorizontalAlignment="Right"
-                  Cursor="Hand">
+                  Cursor="Hand"
+                  Grid.Column="3">
             </MenuItem>
 
             <MenuItem x:Name="ChatButton" 
@@ -94,7 +127,8 @@ Click="HomeButton_Click"/>
                   Padding="5, 5, 5, 5"
                   HorizontalAlignment="Right"
                   Cursor="Hand"
-                      Click="ChatButton_Click">
+                  Click="ChatButton_Click"
+                  Grid.Column="3">
             </MenuItem>
 
             <MenuItem x:Name="LogOutButton" 
@@ -108,7 +142,8 @@ Click="HomeButton_Click"/>
                   Padding="5, 5, 5, 5"
                   HorizontalAlignment="Right"
                   Click="LogOutButton_Click"
-                  Cursor="Hand">
+                  Cursor="Hand"
+                  Grid.Column="3">
             </MenuItem>
         </Menu>
     </Grid>
@@ -132,36 +167,9 @@ Click="HomeButton_Click"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
+                                <Setter TargetName="border" Property="Background" Value="#ffffff"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#f0f0f0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
+                            <Trigger Property="IsMouseDirectlyOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -169,7 +177,6 @@ Click="HomeButton_Click"/>
                 </Setter.Value>
             </Setter>
         </Style>
-        
     </UserControl.Resources>
 
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,33 @@ namespace TeacherStudentPlatform
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class MainMenu : UserControl, INotifyPropertyChanged
     {
+        private string _currentDay;
+
+    public string CurrentDay
+    {
+        get { return _currentDay; }
+        set
+        {
+            if (_currentDay != value)
+            {
+                _currentDay = value;
+                OnPropertyChanged("CurrentDay");
+            }
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
         public MainMenu()
         {
             InitializeComponent();
+            CurrentDay = DateTime.Now.DayOfWeek.ToString().ToUpper();
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
