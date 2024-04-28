@@ -78,7 +78,7 @@
                                     Margin="0">
                             <TextBlock x:Name="MonthYearLabel" 
                                     Margin="9, 15, 0, 0" 
-                                    Text="{Binding CurrentMonthYear}"
+                                    Text="{Binding Path=CurrentMonthYear, RelativeSource={RelativeSource AncestorType=local:Calendar}}"
                                     HorizontalAlignment="Left"
                                     FontWeight="SemiBold"
                                     Foreground="#4d5566"

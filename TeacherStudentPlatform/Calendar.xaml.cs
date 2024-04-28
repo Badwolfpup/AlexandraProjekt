@@ -30,7 +30,7 @@ namespace TeacherStudentPlatform
 
         public string CurrentMonthYear
         {
-            get { return $"{currentDate:MMMM yyyy}"; }
+            get { return $"{currentDate:MMMM yyyy}".ToUpper(); }
         }
 
         protected void OnPropertyChanged(string propertyName)
