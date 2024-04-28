@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,30 +23,52 @@ namespace TeacherStudentPlatform
     public partial class MainMenu : UserControl, INotifyPropertyChanged
     {
         private string _currentDay;
+        private string _currentDateTime;
 
-    public string CurrentDay
-    {
-        get { return _currentDay; }
-        set
+        public string CurrentDay
         {
-            if (_currentDay != value)
+            get { return _currentDay; }
+            set
             {
-                _currentDay = value;
-                OnPropertyChanged("CurrentDay");
+                if (_currentDay != value)
+                {
+                    _currentDay = value;
+                    OnPropertyChanged("CurrentDay");
+                }
+            }
+
+        }
+
+        public string CurrentDateTime
+        {
+            get { return _currentDateTime; }
+            set
+            {
+                if (_currentDateTime != value)
+                {
+                    _currentDateTime = value;
+                    OnPropertyChanged("CurrentDateTime");
+                }
             }
         }
-    }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+        private System.Timers.Timer timer;
         public MainMenu()
         {
             InitializeComponent();
-            CurrentDay = DateTime.Now.DayOfWeek.ToString().ToUpper();
+
+            // Create a timer with a one-second interval
+            timer = new System.Timers.Timer(1000);
+            timer.Elapsed += TimerElapsed;
+            timer.Start();
+
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
@@ -97,6 +120,12 @@ namespace TeacherStudentPlatform
             login.Show();
 
             parentWindow.Close();
+        }
+
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            // Update the CurrentDateTime property with the current date and time
+            CurrentDateTime = $"{DateTime.Now:dddd, d MMMM yyyy HH:mm}";
         }
 
     }

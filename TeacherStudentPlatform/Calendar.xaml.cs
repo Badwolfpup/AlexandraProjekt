@@ -114,7 +114,7 @@ namespace TeacherStudentPlatform
                             HorizontalAlignment = HorizontalAlignment.Left,
                             VerticalAlignment = VerticalAlignment.Center,
                             Foreground = Brushes.Black,
-                            FontSize = 14,
+                            FontSize = 13,
                             Text = currentDay.ToString("00")
                         };
 
@@ -124,8 +124,9 @@ namespace TeacherStudentPlatform
                             HorizontalAlignment = HorizontalAlignment.Left,
                             VerticalAlignment = VerticalAlignment.Top,
                             Foreground = Brushes.Black,
+                            FontSize = 11,
                             TextWrapping = TextWrapping.Wrap,
-                            Margin = new Thickness(5, 0, 0, 0)
+                            Margin = new Thickness(1, 0, 0, 0)
                         };
 
                         var border = new Border
@@ -176,11 +177,6 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-        private void AddTaskWindow_Click(object sender, RoutedEventArgs e)
-        {
-            AddTaskWindow.Visibility = Visibility.Visible;
-        }
-
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             // Get the task description from the TextBox
@@ -198,9 +194,6 @@ namespace TeacherStudentPlatform
 
             // Update the calendar display
             DisplayCalendar(currentDate);
-
-            // Hide the AddTaskWindow after adding the task
-            AddTaskWindow.Visibility = Visibility.Hidden;
         }
 
         private void Today_Click(object sender, RoutedEventArgs e)

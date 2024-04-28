@@ -11,6 +11,11 @@
     <Grid>
         <local:MainMenu />
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="140" />
+            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -19,17 +24,18 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="5"
-Margin="15, 15, 15, 15"
-Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
-BorderThickness="0"
-BorderBrush="White"
-Background="#f0f0f0">
+            <Border CornerRadius="1"
+            Margin="30,5,15,15"
+            Grid.Column="1" Grid.Row="1"
+            Grid.RowSpan="3"
+            BorderThickness="0"
+            BorderBrush="White"
+            Background="White">
 
                 <TextBlock Text="Learning Platform"
-  Margin="10"
-  Foreground="#4d5566"
-  FontStyle="Oblique"/>
+              Margin="10,10,10,10"
+              Foreground="#4d5566"
+              FontStyle="Oblique"/>
             </Border>
         </Grid>
     </Grid>
