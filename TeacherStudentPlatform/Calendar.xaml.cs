@@ -70,7 +70,7 @@ namespace TeacherStudentPlatform
             }
 
             // Add day names to the grid
-            string[] dayNames = { "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY" };
+            string[] dayNames = { "MÅNDAG", "TISDAG", "ONSDAG", "TORSDAG", "FREDAG", "LÖRDAG", "SÖNDAG" };
             string dayColor = "#4d5566";
             for (int i = 0; i < 7; i++)
             {
