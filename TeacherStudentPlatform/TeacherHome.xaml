@@ -9,6 +9,7 @@
       Title="TeacherHome" Background="#f0f0f0">
 
     <Grid>
+        <local:TeacherMainMenu />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="140" />

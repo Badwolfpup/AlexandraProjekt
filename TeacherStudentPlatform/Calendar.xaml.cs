@@ -38,7 +38,7 @@ namespace TeacherStudentPlatform
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Calendar(TeacherCalendar teachercalendar)
+        public Calendar()
         {
             InitializeComponent();
             currentDate = DateTime.Today;

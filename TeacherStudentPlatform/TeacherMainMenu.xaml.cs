@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace TeacherStudentPlatform
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl, INotifyPropertyChanged
+    public partial class TeacherMainMenu : UserControl, INotifyPropertyChanged
     {
         private string _currentDay;
         private string _currentDateTime;
@@ -60,7 +61,7 @@ namespace TeacherStudentPlatform
         }
 
         private System.Timers.Timer timer;
-        public MainMenu()
+        public TeacherMainMenu()
         {
             InitializeComponent();
             DataContext = this;
@@ -75,15 +76,15 @@ namespace TeacherStudentPlatform
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             Window parent = Window.GetWindow(this);
-            StudentHome student = new StudentHome();
+            TeacherHome student = new TeacherHome();
             parent.Content = student;
         }
 
         private void CalendarButton_Click(object sender, RoutedEventArgs e)
         {
-            Window parentWindow = Window.GetWindow(this);
-            Calendar calendarPage = new Calendar();
-            parentWindow.Content = calendarPage;
+            Window parent = Window.GetWindow(this);
+            TeacherCalendar teacherCalendar = new TeacherCalendar();
+            parent.Content = teacherCalendar;
         }
 
         private void LearningHubButton_Click(object sender, RoutedEventArgs e)
