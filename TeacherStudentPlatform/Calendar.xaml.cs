@@ -177,7 +177,7 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-        
+
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             currentDate = DateTime.Today;
