@@ -63,6 +63,7 @@ namespace TeacherStudentPlatform
         public MainMenu()
         {
             InitializeComponent();
+            DataContext = this;
 
             // Create a timer with a one-second interval
             timer = new System.Timers.Timer(1000);
@@ -125,7 +126,7 @@ namespace TeacherStudentPlatform
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             // Update the CurrentDateTime property with the current date and time
-            CurrentDateTime = $"{DateTime.Now:dddd, d MMMM yyyy HH:mm}";
+            CurrentDateTime = $"{DateTime.Now:dddd, d MMMM yyyy HH:mm}".ToUpper();
         }
 
     }

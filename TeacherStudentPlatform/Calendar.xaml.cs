@@ -195,13 +195,17 @@ namespace TeacherStudentPlatform
             // Update the calendar display
             DisplayCalendar(currentDate);
         }
-
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             currentDate = DateTime.Today;
             OnPropertyChanged(nameof(CurrentDate));
             OnPropertyChanged(nameof(CurrentMonthYear));
             DisplayCalendar(currentDate);
+        }
+
+        private void AddTaskWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AddTaskWindowStackPanel.Visibility = Visibility.Visible;
         }
     }
 }

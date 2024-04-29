@@ -33,16 +33,23 @@
                 Background="White">
 
                 <Grid>
+                    <StackPanel Orientation="Vertical">
+                    <TextBlock Text="GOD MORGON, STUDENT"
+                               Margin="25, 10, 0, 10"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="#4d5566"/>
+                        
                     <Border Background="#f0f0f0"
                         Width="670"
                         Height="50"
                         VerticalAlignment="Top"
-                        Margin="0, 10, 0, 10"
+                        Margin="10, 10, 10, 0"
                         Padding="5"
                         CornerRadius="3">
 
-                        <TextBlock Text="På kalendern för idag:"
-                              Margin="10,10,10,10"
+                        <TextBlock Text="Idag"
+                              Margin="10, 10, 10, 10"
                               Foreground="#4d5566"
                               FontWeight="Bold"/>
                     </Border>
@@ -51,16 +58,16 @@
                             Width="670"
                             Height="250"
                             VerticalAlignment="Top"
-                            Margin="0, 70, 0, 10"
+                            Margin="10, 10, 10, 10"
                             Padding="5"
                             CornerRadius="3">
 
                         <TextBlock Text="Nyheter"
-                              Margin="10,10,10,10"
+                              Margin="10, 10, 10, 10"
                               Foreground="#4d5566"
                               FontWeight="Bold"/>
                     </Border>
-
+                    </StackPanel>
                 </Grid>
             </Border>
         </Grid>
