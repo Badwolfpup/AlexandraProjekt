@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace TeacherStudentPlatform
 {
     /// <summary>
-    /// Interaction logic for Calendar.xaml
+    /// Interaction logic for TeacherCalendar.xaml
     /// </summary>
-    public partial class Calendar : Page, INotifyPropertyChanged
+    public partial class TeacherCalendar : Page
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private DateTime currentDate;
@@ -38,7 +46,7 @@ namespace TeacherStudentPlatform
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Calendar(TeacherCalendar teachercalendar)
+        public TeacherCalendar()
         {
             InitializeComponent();
             currentDate = DateTime.Today;
@@ -177,7 +185,24 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-        
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the task description from the TextBox
+            string taskDescription = TaskDescriptionTextBox.Text;
+
+            // Get the selected date from the DatePicker
+            DateTime selectedDate = TaskDatePicker.SelectedDate ?? DateTime.Today;
+
+            // Add the task to the calendar
+            if (!tasksByDate.ContainsKey(selectedDate))
+            {
+                tasksByDate[selectedDate] = new List<string>();
+            }
+            tasksByDate[selectedDate].Add(taskDescription);
+
+            // Update the calendar display
+            DisplayCalendar(currentDate);
+        }
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             currentDate = DateTime.Today;
@@ -186,17 +211,9 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-
-        public void AddTasksFromTeacherCalendar(DateTime date, List<string> tasks)
+        private void AddTaskWindow_Click(object sender, RoutedEventArgs e)
         {
-            if (!tasksByDate.ContainsKey(date))
-            {
-                tasksByDate[date] = new List<string>();
-            }
-
-            tasksByDate[date].AddRange(tasks);
-
-            DisplayCalendar(currentDate); // Refresh the calendar display
+            AddTaskWindowStackPanel.Visibility = Visibility.Visible;
         }
     }
 }

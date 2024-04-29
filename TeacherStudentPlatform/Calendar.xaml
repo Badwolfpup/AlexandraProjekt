@@ -113,15 +113,6 @@
                                     HorizontalAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Cursor="Hand"/>
-                                
-                                <MenuItem Header="ADD TASK" 
-                                    Click="AddTaskWindow_Click" 
-                                    Width="auto"
-                                    Height="25"
-                                    Margin="0, 10, 0, 0"
-                                    HorizontalAlignment="Right"
-                                    VerticalContentAlignment="Center"
-                                    Cursor="Hand"/>
                             </Menu>
                         </StackPanel>
 
@@ -132,43 +123,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <!--Add Task to Calendar Window-->
-                    <Border Background="#f0f0f0" 
-                            Margin="740,0,-392,0">
-                        <Grid>
-                            <StackPanel x:Name="AddTaskWindowStackPanel"
-                                Orientation="Vertical" 
-                                Margin="10, 10, 10, 10" 
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Grid.RowSpan="5"
-                                Grid.ColumnSpan="5"
-                                Background="White"
-                                Visibility="Hidden">
-
-                                <TextBox x:Name="TaskDescriptionTextBox" 
-                                 Width="200" 
-                                 Margin="10" 
-                                 Height="23" 
-                                 Text="{Binding TaskDescription, Mode=TwoWay}" 
-                                 VerticalAlignment="Center" 
-                                 FontSize="12"
-                                 Grid.Row="0"/>
-
-                                <DatePicker x:Name="TaskDatePicker" 
-                                Width="200" Height="23" 
-                                SelectedDate="{Binding SelectedTaskDate, Mode=TwoWay}" 
-                                Grid.Row="1"
-                                Grid.ColumnSpan="1"
-                                Margin="10"/>
-
-                                <Button Content="Add Task" 
-                                Click="AddTaskButton_Click" 
-                                Height="23" 
-                                Margin="10"/>   
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+                   
                 </Grid>
             </Border>
         </Grid>

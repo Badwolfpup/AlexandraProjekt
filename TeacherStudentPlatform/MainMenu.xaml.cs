@@ -82,9 +82,9 @@ namespace TeacherStudentPlatform
         private void CalendarButton_Click(object sender, RoutedEventArgs e)
         {
             Window parent = Window.GetWindow(this);
-            Calendar calendar = new Calendar();
+            TeacherCalendar teacherCalendar = new TeacherCalendar();
+            Calendar calendar = new Calendar(teacherCalendar);
             parent.Content = calendar;
-
         }
 
         private void LearningHubButton_Click(object sender, RoutedEventArgs e)
