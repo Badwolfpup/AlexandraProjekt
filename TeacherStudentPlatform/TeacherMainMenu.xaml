@@ -113,6 +113,7 @@
             <MenuItem x:Name="HomeButton" 
                   FontSize="16" 
                   FontWeight="Bold"
+                  FontFamily="Palatino Linotype"
                   Header="SCHOOL" 
                   Width="168" 
                   Height="50" 
