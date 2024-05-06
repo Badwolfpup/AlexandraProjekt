@@ -16,6 +16,7 @@ namespace TeacherStudentPlatform
         public event PropertyChangedEventHandler PropertyChanged;
         private DateTime currentDate;
         private Dictionary<DateTime, List<string>> tasksByDate;
+        private TeacherCalendar teacherCalendar;
 
         public DateTime CurrentDate
         {
@@ -44,6 +45,10 @@ namespace TeacherStudentPlatform
             currentDate = DateTime.Today;
             tasksByDate = new Dictionary<DateTime, List<string>>();
             DisplayCalendar(currentDate);
+
+            // Subscribe to the TaskAdded event of TeacherCalendar
+            TeacherCalendar teacherCalendar = new TeacherCalendar();
+            teacherCalendar.TaskAdded += TeacherCalendar_TaskAdded;
         }
 
         public void DisplayCalendar(DateTime date)
@@ -151,15 +156,18 @@ namespace TeacherStudentPlatform
 
         private string GetTasksForDate(DateTime date)
         {
-            if (tasksByDate.ContainsKey(date))
+            string formattedDate = date.ToShortDateString();
+            List<string> tasks = Task.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
+
+            // Remove the formatted date from each task description
+            for (int i = 0; i < tasks.Count; i++)
             {
-                return string.Join("\n", tasksByDate[date]);
+                tasks[i] = tasks[i].Replace(formattedDate + ": ", ""); // Replace the formatted date with an empty string
             }
-            else
-            {
-                return "";
-            }
+
+            return string.Join("\n", tasks);
         }
+
 
         private void NextMonth_Click(object sender, RoutedEventArgs e)
         {
@@ -177,7 +185,6 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             currentDate = DateTime.Today;
@@ -186,17 +193,17 @@ namespace TeacherStudentPlatform
             DisplayCalendar(currentDate);
         }
 
-
-        public void AddTasksFromTeacherCalendar(DateTime date, List<string> tasks)
+        private void TeacherCalendar_TaskAdded(object sender, TaskAddedEventArgs e)
         {
-            if (!tasksByDate.ContainsKey(date))
+            // Add the task to the dictionary in the Calendar
+            if (!tasksByDate.ContainsKey(e.Date))
             {
-                tasksByDate[date] = new List<string>();
+                tasksByDate[e.Date] = new List<string>();
             }
+            tasksByDate[e.Date].Add(e.Task);
 
-            tasksByDate[date].AddRange(tasks);
-
-            DisplayCalendar(currentDate); // Refresh the calendar display
+            // Update the display
+            DisplayCalendar(currentDate);
         }
     }
 }

@@ -19,12 +19,40 @@ namespace TeacherStudentPlatform
     /// <summary>
     /// Interaction logic for TeacherCalendar.xaml
     /// </summary>
+    /// 
+    public class TaskAddedEventArgs : EventArgs
+    {
+        public DateTime Date { get; }
+        public string Task { get; }
+
+        public TaskAddedEventArgs(DateTime date, string task)
+        {
+            Date = date;
+            Task = task;
+        }
+    }
+
+    public static class Task
+    {
+        // Define a static list to hold tasks
+        public static List<string> Tasks { get; private set; } = new List<string>();
+
+        // Method to add tasks
+        public static void AddTask(DateTime date, string task)
+        {
+            string taskDescription = $"{date.ToShortDateString()}: {task}";
+            Tasks.Add(taskDescription);
+        }
+    }
     public partial class TeacherCalendar : Page
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private DateTime currentDate;
         private Dictionary<DateTime, List<string>> tasksByDate;
+        public event EventHandler<TaskAddedEventArgs> TaskAdded;
 
+        // Define a static list to hold tasks
+        public static List<string> Tasks { get; private set; } = new List<string>();
         public DateTime CurrentDate
         {
             get { return currentDate; }
@@ -52,6 +80,11 @@ namespace TeacherStudentPlatform
             currentDate = DateTime.Today;
             tasksByDate = new Dictionary<DateTime, List<string>>();
             DisplayCalendar(currentDate);
+        }
+
+        protected virtual void OnTaskAdded(DateTime date, string task)
+        {
+            TaskAdded?.Invoke(this, new TaskAddedEventArgs(date, task));
         }
 
         public void DisplayCalendar(DateTime date)
@@ -159,15 +192,19 @@ namespace TeacherStudentPlatform
 
         private string GetTasksForDate(DateTime date)
         {
-            if (tasksByDate.ContainsKey(date))
+            string formattedDate = date.ToShortDateString();
+            List<string> tasks = Task.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
+
+            // Remove the formatted date from each task description
+            for (int i = 0; i < tasks.Count; i++)
             {
-                return string.Join("\n", tasksByDate[date]);
+                tasks[i] = tasks[i].Replace(formattedDate + ": ", ""); // Replace the formatted date with an empty string
             }
-            else
-            {
-                return "";
-            }
+
+            return string.Join("\n", tasks);
         }
+
+
 
         private void NextMonth_Click(object sender, RoutedEventArgs e)
         {
@@ -187,18 +224,11 @@ namespace TeacherStudentPlatform
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the task description from the TextBox
-            string taskDescription = TaskDescriptionTextBox.Text;
+            // Assuming you have date and task description available
+            DateTime date = TaskDatePicker.SelectedDate ?? DateTime.Today;
+            string task = TaskDescriptionTextBox.Text;
 
-            // Get the selected date from the DatePicker
-            DateTime selectedDate = TaskDatePicker.SelectedDate ?? DateTime.Today;
-
-            // Add the task to the calendar
-            if (!tasksByDate.ContainsKey(selectedDate))
-            {
-                tasksByDate[selectedDate] = new List<string>();
-            }
-            tasksByDate[selectedDate].Add(taskDescription);
+            Task.AddTask(date, task);
 
             // Update the calendar display
             DisplayCalendar(currentDate);

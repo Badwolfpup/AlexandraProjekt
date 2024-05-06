@@ -83,45 +83,55 @@
                                 Width="150"
                                 Height="25"/>
 
-                            <Menu Background="White"
-                              Foreground="#4d5566"
-                              FontWeight="SemiBold">
-                                <MenuItem Header="PREVIOUS"
-                                Click="PrevMonth_Click" 
-                                Width="60"
-                                Height="25"
-                                Margin="300, 10, 0, 0"
-                                HorizontalAlignment="Right"
-                                VerticalContentAlignment="Center"
-                                Cursor="Hand"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="Previous" 
+                                        Click="PrevMonth_Click"
+                                        Width="60"
+                                        Height="25"
+                                        Margin="10,10,0,0"
+                                        Padding="5"
+                                        Foreground="#4d5566"
+                                        Background="Transparent"
+                                        BorderThickness="1"
+                                        BorderBrush="#4d5566"
+                                        Cursor="Hand"/>
 
-                                <MenuItem Header="TODAY"
-                                Click="Today_Click" 
-                                Width="50"
-                                Height="25"
-                                Margin="10, 10, 0, 0"
-                                HorizontalAlignment="Right"
-                                VerticalContentAlignment="Center"
-                                Cursor="Hand"/>
+                                <Button Content="Today" 
+                                        Click="Today_Click"
+                                        Width="50"
+                                        Height="25"
+                                        Margin="10,10,0,0"
+                                        Padding="5"
+                                        Foreground="#4d5566"
+                                        Background="Transparent"
+                                        BorderThickness="1"
+                                        BorderBrush="#4d5566"
+                                        Cursor="Hand"/>
 
-                                <MenuItem Header="NEXT" 
-                                Click="NextMonth_Click" 
-                                Width="32"
-                                Height="25"
-                                Margin="0, 10, 10, 0"
-                                HorizontalAlignment="Right"
-                                VerticalContentAlignment="Center"
-                                Cursor="Hand"/>
+                                <Button Content="Next" 
+                                        Click="NextMonth_Click"
+                                        Width="auto"
+                                        Height="25"
+                                        Margin="10,10,10,0"
+                                        Padding="5"
+                                        Foreground="#4d5566"
+                                        Background="Transparent"
+                                        BorderThickness="1"
+                                        BorderBrush="#4d5566"
+                                        Cursor="Hand"/>
 
-                                <MenuItem Header="ADD TASK" 
-                                Click="AddTaskWindow_Click" 
-                                Width="auto"
-                                Height="25"
-                                Margin="0, 10, 0, 0"
-                                HorizontalAlignment="Right"
-                                VerticalContentAlignment="Center"
-                                Cursor="Hand"/>
-                            </Menu>
+                                <Button Content="Add Task" 
+                                        Click="AddTaskWindow_Click" 
+                                        Width="70"
+                                        Height="25"
+                                        Margin="10,10,0,0"
+                                        Padding="5"
+                                        Foreground="#4d5566"
+                                        Background="Transparent"
+                                        BorderThickness="1"
+                                        BorderBrush="#4d5566"
+                                        Cursor="Hand"/>
+                            </StackPanel>
                         </StackPanel>
 
                         <StackPanel x:Name="CalendarStackPanel" 
