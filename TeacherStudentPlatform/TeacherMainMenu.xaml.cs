@@ -73,7 +73,7 @@ namespace TeacherStudentPlatform
 
         }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        private void TeacherHomeButton_Click(object sender, RoutedEventArgs e)
         {
             Window parent = Window.GetWindow(this);
             TeacherHome student = new TeacherHome();

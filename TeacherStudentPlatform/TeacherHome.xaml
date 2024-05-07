@@ -12,9 +12,10 @@
         <local:TeacherMainMenu />
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -24,18 +25,80 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="5"
-Margin="15, 15, 15, 15"
-Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
-BorderThickness="0"
-BorderBrush="White"
-Background="#f0f0f0">
+            <Border CornerRadius="1"
+                Margin="0, 5, 10, 0"
+                Grid.Column="1" Grid.ColumnSpan="2"
+                Grid.Row="1" Grid.RowSpan="3"
+                BorderThickness="0"
+                BorderBrush="White"
+                Background="White">
 
-                <TextBlock Text="TeacherHome"
-  Margin="10"
-  Foreground="#4d5566"
-  FontStyle="Oblique"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="DASHBOARD"
+                               Margin="10, 10, 15, 0"
+                               Padding="5"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="#4d5566"/>
+
+                    <TextBlock Text="God morgon!"
+                               Margin="10, 10, 10, 5"
+                               Padding="15"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="#fff"
+                               Background="#4d5566"/>
+
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="DASHBOARD"
+                               Margin="10, 10, 10, 5"
+                                Padding="15"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="#fff"
+                                Background="#4d5566"/>
+
+                        <Button Content="God morgon!"
+                               Margin="10, 10, 10, 5"
+                               Padding="15"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="#fff"
+                               Background="#4d5566"/>
+
+                        <Button Content="DASHBOARD"
+                               Margin="10, 10, 10, 5"
+                                Padding="15"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="#fff"
+                                Background="#4d5566"/>
+
+                        <Button Content="God morgon!"
+                               Margin="10, 10, 10, 5"
+                               Padding="15"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="#fff"
+                               Background="#4d5566"/>
+                    </StackPanel>
+                </StackPanel>
             </Border>
+
+            <Border CornerRadius="1"
+                Margin="0, 5, 15, 0"
+                Grid.Column="3"
+                Grid.Row="1" Grid.RowSpan="3"
+                BorderThickness="0"
+                BorderBrush="White"
+                Background="White">
+
+                <StackPanel Orientation="Vertical">
+                    
+                </StackPanel>
+            </Border>
+
         </Grid>
     </Grid>
 </Page>

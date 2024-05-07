@@ -175,6 +175,7 @@
                             Click="AddTaskButton_Click" 
                             Height="23" 
                             Margin="10"/>
+                                
                             </StackPanel>
                         </Grid>
                     </Border>

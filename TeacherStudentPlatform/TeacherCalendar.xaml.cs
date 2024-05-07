@@ -233,6 +233,10 @@ namespace TeacherStudentPlatform
             // Update the calendar display
             DisplayCalendar(currentDate);
         }
+        private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             currentDate = DateTime.Today;
@@ -245,5 +249,8 @@ namespace TeacherStudentPlatform
         {
             AddTaskWindowStackPanel.Visibility = Visibility.Visible;
         }
+
+
+
     }
 }
