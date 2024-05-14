@@ -157,7 +157,7 @@ namespace TeacherStudentPlatform
         private string GetTasksForDate(DateTime date)
         {
             string formattedDate = date.ToShortDateString();
-            List<string> tasks = Task.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
+            List<string> tasks = TaskManager.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
 
             // Remove the formatted date from each task description
             for (int i = 0; i < tasks.Count; i++)

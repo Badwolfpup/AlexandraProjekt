@@ -8,13 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentHome" Background="#f0f0f0">
 
+    <Page.Resources>
+        <local:StudentTimeToGreetingConverter x:Key="StudentTimeToGreetingConverter"/>
+    </Page.Resources>
+    
     <Grid>
         <local:MainMenu />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="140" />
-                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="290" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -25,51 +30,120 @@
             </Grid.RowDefinitions>
 
             <Border CornerRadius="1"
-                Margin="30, 5, 15, 0"
-                Grid.Column="1" Grid.Row="1"
-                Grid.RowSpan="3"
-                BorderThickness="0"
-                BorderBrush="White"
-                Background="White">
+                    Margin="40, 5, 40, 0"
+                    Grid.Column="1" Grid.ColumnSpan="2"
+                    Grid.Row="1" Grid.RowSpan="3"
+                    BorderThickness="0"
+                    BorderBrush="White"
+                    Background="#f0f0f0">
 
                 <Grid>
                     <StackPanel Orientation="Vertical">
-                    <TextBlock Text="GOD MORGON, STUDENT"
-                               Margin="25, 10, 0, 10"
-                               FontSize="14"
-                               FontWeight="Bold"
-                               Foreground="#4d5566"/>
-                        
-                    <Border Background="#f0f0f0"
-                        Width="670"
-                        Height="50"
-                        VerticalAlignment="Top"
-                        Margin="10, 10, 10, 0"
-                        Padding="5"
-                        CornerRadius="3">
-
-                        <TextBlock Text="Idag"
-                              Margin="10, 10, 10, 10"
+                        <TextBlock Text="DASHBOARD"
+                              Margin="10, 10, 10, 0"
+                              Padding="5"
                               Foreground="#4d5566"
                               FontWeight="Bold"/>
-                    </Border>
+                        <Border Background="#fff"
+                            Width="auto"
+                            Height="150"
+                            VerticalAlignment="Top"
+                            Margin="10, 10, 10, 0"
+                            Padding="5"
+                            CornerRadius="10">
+                            <TextBlock Text="{Binding Path=CurrentDateTime, Converter={StaticResource StudentTimeToGreetingConverter}}"
+                                Margin="15, 10, 10, 10"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Foreground="#4d5566"
+                                FontFamily="Segoe UI"
+                                Height="auto"
+                                Width="auto"/>
+                        </Border>
 
-                    <Border Background="#f0f0f0"
-                            Width="670"
-                            Height="250"
+                        <TextBlock Text="Uppdateringar"
+                            Margin="10, 10, 10, 0"
+                            Padding="5"
+                            Foreground="#4d5566"
+                            FontWeight="Bold"/>
+                        <Border Background="#fff"
+                            Width="auto"
+                            Height="150"
+                            VerticalAlignment="Top"
+                            Margin="10, 5, 10, 0"
+                            Padding="5"
+                            CornerRadius="10">
+                        </Border>
+
+                        <TextBlock Text="Uppgifter"
+                            Margin="10, 10, 10, 0"
+                            Padding="5"
+                            Foreground="#4d5566"
+                            FontWeight="Bold"/>
+                        <Border Background="#fff"
+                            Width="auto"
+                            Height="150"
+                            VerticalAlignment="Top"
+                            Margin="10, 5, 10, 0"
+                            Padding="5"
+                            CornerRadius="10">
+                            <ListView Height="auto">
+                            </ListView>
+                        </Border>
+
+                    </StackPanel>
+                </Grid>
+             </Border>
+
+            <Border CornerRadius="1"
+                    Margin="0, 5, 30, 0"
+                    Grid.Column="3"
+                    Grid.Row="1" Grid.RowSpan="3"
+                    BorderThickness="0"
+                    BorderBrush="White"
+                    Background="#f0f0f0">
+                <Grid>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Schema"
+                            Margin="10, 10, 10, 0"
+                            Padding="5"
+                            Foreground="#4d5566"
+                            FontWeight="Bold"/>
+                        <Border Background="#fff"
+                            Height="200"
                             VerticalAlignment="Top"
                             Margin="10, 10, 10, 10"
                             Padding="5"
-                            CornerRadius="3">
+                            CornerRadius="5">
+                        </Border>
 
                         <TextBlock Text="Nyheter"
-                              Margin="10, 10, 10, 10"
-                              Foreground="#4d5566"
-                              FontWeight="Bold"/>
-                    </Border>
+                                Margin="10, 10, 10, 0"
+                                Padding="5"
+                                Foreground="#4d5566"
+                                FontWeight="Bold"/>
+                        <Border Background="#fff"
+                                Height="205"
+                                VerticalAlignment="Top"
+                                Margin="10, 10, 10, 10"
+                                Padding="5"
+                                CornerRadius="5"/>
+
+                        <TextBlock Text="Meddelanden"
+                                Margin="10, 10, 10, 0"
+                                Padding="5"
+                                Foreground="#4d5566"
+                                FontWeight="Bold"/>
+                        <Border Background="#fff"
+                                Height="105"
+                                VerticalAlignment="Top"
+                                Margin="10, 10, 10, 10"
+                                Padding="5"
+                                CornerRadius="5"/>
                     </StackPanel>
                 </Grid>
             </Border>
+
         </Grid>
     </Grid>
 </Page>

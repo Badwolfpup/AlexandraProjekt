@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace TeacherStudentPlatform
 {
@@ -32,27 +34,43 @@ namespace TeacherStudentPlatform
         }
     }
 
-    public static class Task
+    public static class TaskManager
     {
-        // Define a static list to hold tasks
         public static List<string> Tasks { get; private set; } = new List<string>();
 
-        // Method to add tasks
         public static void AddTask(DateTime date, string task)
         {
             string taskDescription = $"{date.ToShortDateString()}: {task}";
             Tasks.Add(taskDescription);
         }
+
+        public static void SaveTasksToJson(string filePath)
+        {
+            string json = JsonConvert.SerializeObject(Tasks);
+            File.WriteAllText(filePath, json);
+        }
+
+        public static void LoadTasksFromJson(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                Tasks = JsonConvert.DeserializeObject<List<string>>(json);
+            }
+        }
     }
     public partial class TeacherCalendar : Page
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private const string FilePath = "CalendarTasks.json";
+
         private DateTime currentDate;
         private Dictionary<DateTime, List<string>> tasksByDate;
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler<TaskAddedEventArgs> TaskAdded;
 
-        // Define a static list to hold tasks
         public static List<string> Tasks { get; private set; } = new List<string>();
+
         public DateTime CurrentDate
         {
             get { return currentDate; }
@@ -80,11 +98,39 @@ namespace TeacherStudentPlatform
             currentDate = DateTime.Today;
             tasksByDate = new Dictionary<DateTime, List<string>>();
             DisplayCalendar(currentDate);
+
+            // Load tasks from JSON file when the application starts
+            LoadTasks();
+
+            // Attach event handler for window closing event
+            Loaded += TeacherCalendar_Loaded;
         }
 
-        protected virtual void OnTaskAdded(DateTime date, string task)
+        private void TeacherCalendar_Loaded(object sender, RoutedEventArgs e)
         {
-            TaskAdded?.Invoke(this, new TaskAddedEventArgs(date, task));
+            Window parentWindow = Window.GetWindow(this);
+            if (parentWindow != null)
+            {
+                parentWindow.Closing += ParentWindow_Closing;
+            }
+        }
+
+        private void ParentWindow_Closing(object sender, CancelEventArgs e)
+        {
+            // Save tasks to JSON file when the application closes
+            SaveTasks();
+        }
+
+        private void LoadTasks()
+        {
+            TaskManager.LoadTasksFromJson(FilePath);
+            // Reload the calendar to display the loaded tasks
+            DisplayCalendar(currentDate);
+        }
+
+        private void SaveTasks()
+        {
+            TaskManager.SaveTasksToJson(FilePath);
         }
 
         public void DisplayCalendar(DateTime date)
@@ -193,7 +239,7 @@ namespace TeacherStudentPlatform
         private string GetTasksForDate(DateTime date)
         {
             string formattedDate = date.ToShortDateString();
-            List<string> tasks = Task.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
+            List<string> tasks = TaskManager.Tasks.Where(t => t.StartsWith(formattedDate)).ToList();
 
             // Remove the formatted date from each task description
             for (int i = 0; i < tasks.Count; i++)
@@ -203,8 +249,6 @@ namespace TeacherStudentPlatform
 
             return string.Join("\n", tasks);
         }
-
-
 
         private void NextMonth_Click(object sender, RoutedEventArgs e)
         {
@@ -224,13 +268,10 @@ namespace TeacherStudentPlatform
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            // Assuming you have date and task description available
             DateTime date = TaskDatePicker.SelectedDate ?? DateTime.Today;
             string task = TaskDescriptionTextBox.Text;
 
-            Task.AddTask(date, task);
-
-            // Update the calendar display
+            TaskManager.AddTask(date, task);
             DisplayCalendar(currentDate);
         }
         private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
@@ -249,8 +290,5 @@ namespace TeacherStudentPlatform
         {
             AddTaskWindowStackPanel.Visibility = Visibility.Visible;
         }
-
-
-
     }
 }

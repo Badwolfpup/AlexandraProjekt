@@ -21,24 +21,6 @@
         <!-- Left-aligned menu items -->
         <Menu Background="White" Foreground="#4d5566" Grid.Row="1" Padding="5, 0, 0, 0" Margin="0,0,0,0" Height="auto" HorizontalContentAlignment="Left">
 
-            <MenuItem Header="HEJ LÄRARE!"
-                Background="White"
-                Foreground="#4d5566"
-                FontSize="11"
-                FontWeight="Bold"
-                Margin="0, 10, 15, 0"
-                Padding="20, 0, 0, 0"
-                Height="15"/>
-            <TextBlock Text="{Binding CurrentDateTime}"
-                Background="White"
-                Foreground="#4d5566"
-                FontSize="11"
-                FontWeight="SemiBold"
-                Margin="0, 0, 0, 0"
-                Padding="20, 0, 35, 0"
-                Height="50"
-                TextWrapping="Wrap"/>
-
             <Border Background="#f0f0f0"
                     Height="5"
                     Width="170"
@@ -57,8 +39,8 @@
                 Cursor="Hand"
                 Click="TeacherHomeButton_Click"
                 Grid.Column="1"
-                VerticalContentAlignment="Center">
-            </MenuItem>
+                VerticalContentAlignment="Center"/>
+
 
             <MenuItem x:Name="NewsButton" 
                   FontSize="12" 
@@ -72,8 +54,8 @@
                   Cursor="Hand"
                   Click="NewsButton_Click"
                   Grid.Column="1"
-                  VerticalContentAlignment="Center">
-            </MenuItem>
+                  VerticalContentAlignment="Center"/>
+
 
             <MenuItem x:Name="CalendarButton" 
                   FontSize="12" 
@@ -86,11 +68,11 @@
                   Margin="0, 0, 0, 0"
                   Cursor="Hand"
                   Click="CalendarButton_Click"
-                  Grid.Column="0"
-                  VerticalContentAlignment="Center">
-                </MenuItem>
+                  Grid.Column="1"
+                  VerticalContentAlignment="Center"/>
 
-                <MenuItem x:Name="ChatButton" 
+
+            <MenuItem x:Name="ChatButton" 
                   FontSize="12" 
                   FontWeight="SemiBold" 
                   Header="MEDDELANDEN" 
@@ -101,9 +83,9 @@
                   Margin="0, 0, 0, 0"
                   Cursor="Hand"
                   Click="ChatButton_Click"
-                  Grid.Column="0"
-                  VerticalContentAlignment="Center">
-                </MenuItem>
+                  Grid.Column="1"
+                  VerticalContentAlignment="Center"/>
+
 
             <MenuItem x:Name="LearningPlatformButton" 
                   FontSize="12" 
@@ -117,8 +99,7 @@
                   Cursor="Hand"
                   Click="LearningHubButton_Click"
                   Grid.Column="1"
-                  VerticalContentAlignment="Center">
-            </MenuItem>
+                  VerticalContentAlignment="Center"/>
         </Menu>
 
         <!-- Right-aligned menu items -->

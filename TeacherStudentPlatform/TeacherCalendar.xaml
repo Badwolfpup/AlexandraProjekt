@@ -50,7 +50,7 @@
         <local:TeacherMainMenu />
         <Grid Margin="0,0,0,121">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="165" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -124,7 +124,7 @@
                                         Click="AddTaskWindow_Click" 
                                         Width="70"
                                         Height="25"
-                                        Margin="10,10,0,0"
+                                        Margin="0,10,0,0"
                                         Padding="5"
                                         Foreground="#4d5566"
                                         Background="Transparent"
